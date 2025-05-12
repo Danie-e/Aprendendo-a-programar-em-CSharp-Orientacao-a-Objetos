@@ -1,4 +1,5 @@
 ﻿
+List<string> listaDeBandas = new List<string>();
 void ExibirLogo()
 {
     string mensagemDeBoasVinda = @"
@@ -54,6 +55,7 @@ void RegistrarBanda()
     Console.WriteLine("Registro de Bandas");
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
+    listaDeBandas.Add(nomeDaBanda);
     Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!");
 
     Thread.Sleep(2000);

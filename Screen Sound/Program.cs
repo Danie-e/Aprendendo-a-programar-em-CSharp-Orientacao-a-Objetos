@@ -1,5 +1,5 @@
 ﻿
-List<string> listaDeBandas = new List<string>();
+List<string> listaDeBandas = new List<string>{"The Beatles","U2","Lady Gaga"};
 void ExibirLogo()
 {
     string mensagemDeBoasVinda = @"
@@ -33,7 +33,7 @@ void ExibirOpcoesDoMenu()
             RegistrarBanda();
             break;
         case 2:
-            Console.WriteLine($"Você escolheu a opção {opcaoEscolhida}.");
+            MostrarBandasRegistradas();
             break;
         case 3:
             Console.WriteLine($"Você escolheu a opção {opcaoEscolhida}.");
@@ -59,6 +59,25 @@ void RegistrarBanda()
     Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!");
 
     Thread.Sleep(2000);
+    Console.Clear();
+    ExibirOpcoesDoMenu();
+}
+
+void MostrarBandasRegistradas()
+{
+
+    Console.Clear();
+    Console.WriteLine("*********************************************");
+    Console.WriteLine("Exibindo nome de todas as bandas registradas.");
+    Console.WriteLine("*********************************************\n");
+
+    for (int i = 0; i < listaDeBandas.Count; i++)
+        Console.WriteLine($"Banda: {listaDeBandas[i]}");
+
+    Console.WriteLine("\nPressione qualquer tecla para voltar ao menu principal.");
+    Console.ReadKey();
+
+    Thread.Sleep(1000);
     Console.Clear();
     ExibirOpcoesDoMenu();
 }

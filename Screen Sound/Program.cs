@@ -1,5 +1,5 @@
 ﻿
-void ExibirMensagemDeboasVindas()
+void ExibirLogo()
 {
     string mensagemDeBoasVinda = @"
 
@@ -15,6 +15,8 @@ void ExibirMensagemDeboasVindas()
 
 void ExibirOpcoesDoMenu()
 {
+    ExibirLogo();
+
     Console.WriteLine("Digite 1 para registrar uma banda.");
     Console.WriteLine("Digite 2 para exibir todas as bandas.");
     Console.WriteLine("Digite 3 para avaliar uma banda.");
@@ -27,7 +29,7 @@ void ExibirOpcoesDoMenu()
     switch (opcaoEscolhida)
     {
         case 1:
-            Console.WriteLine($"Você escolheu a opção {opcaoEscolhida}.");
+            RegistrarBanda();
             break;
         case 2:
             Console.WriteLine($"Você escolheu a opção {opcaoEscolhida}.");
@@ -45,5 +47,18 @@ void ExibirOpcoesDoMenu()
     }
 }
 
-ExibirMensagemDeboasVindas();
+void RegistrarBanda()
+{
+    Console.Clear();
+
+    Console.WriteLine("Registro de Bandas");
+    Console.Write("Digite o nome da banda que deseja registrar: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!");
+
+    Thread.Sleep(2000);
+    Console.Clear();
+    ExibirOpcoesDoMenu();
+}
+
 ExibirOpcoesDoMenu();

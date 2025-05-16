@@ -1,4 +1,13 @@
 ﻿
+using Screen_Sound.Models;
+
+Musica musica1 = new Musica();
+musica1.Nome = "Roxane";
+musica1.Artista = "The Police";
+musica1.Duracao = 273;
+musica1.Disponivel = true;
+musica1.ExibirFicha();
+
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
 bandasRegistradas.Add("U2", new() { 1, 4, 8 });
 bandasRegistradas.Add("Imagine Dragons", new() { 10, 5, 3 });

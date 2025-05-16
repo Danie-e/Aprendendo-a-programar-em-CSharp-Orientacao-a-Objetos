@@ -6,5 +6,13 @@
         public string Artista { get; set; } = string.Empty;
         public int Duracao { get; set; }
         public bool Disponivel { get; set; }
+
+        public void ExibirFicha()
+        {
+            Console.WriteLine($"Nome: {Nome}");
+            Console.WriteLine($"Artista: {Artista}");
+            Console.WriteLine($"Duração: {Duracao}");
+            Console.WriteLine(Disponivel ? "A musica esta disponivel no plano" : "Musica não disponivel no plano.");
+        }
     }
 }

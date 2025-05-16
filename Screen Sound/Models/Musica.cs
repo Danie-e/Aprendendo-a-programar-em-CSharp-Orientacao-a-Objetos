@@ -14,5 +14,15 @@
             Console.WriteLine($"Duração: {Duracao}");
             Console.WriteLine(Disponivel ? "A musica esta disponivel no plano" : "Musica não disponivel no plano.");
         }
+
+        public void EscreveDisponivel(bool value)
+        {
+            Disponivel = value;
+        }
+
+        public bool LeDisponivel()
+        {
+            return Disponivel;
+        }
     }
 }

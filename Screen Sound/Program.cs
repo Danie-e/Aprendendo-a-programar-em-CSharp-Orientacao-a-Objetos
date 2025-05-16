@@ -5,6 +5,8 @@ Musica musica1 = new Musica();
 musica1.Nome = "Roxane";
 musica1.Artista = "The Police";
 musica1.Duracao = 273;
+musica1.EscreveDisponivel(true);
+musica1.LeDisponivel();
 musica1.ExibirFicha();
 
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();

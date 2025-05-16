@@ -1,14 +1,14 @@
 ﻿
 using Screen_Sound.Models;
 
+Album AlbumDoQueen = new Album();
+
 Musica musica1 = new Musica();
-musica1.Nome = "Roxane";
-musica1.Artista = "The Police";
+musica1.Nome = "Queen";
+musica1.Artista = "Love of my life";
 musica1.Duracao = 273;
-Console.WriteLine(musica1.DescricaoResumida);
-musica1.EscreveDisponivel(true);
-musica1.LeDisponivel();
-musica1.ExibirFicha();
+
+AlbumDoQueen.AdicionarMusica(musica1);
 
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
 bandasRegistradas.Add("U2", new() { 1, 4, 8 });

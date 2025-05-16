@@ -6,6 +6,7 @@
         public string Artista { get; set; } = string.Empty;
         public int Duracao { get; set; }
         private bool Disponivel { get; set; }
+        public string DescricaoResumida { get { return $"A musica {Nome} e do artista {Artista}"; } }
 
         public void ExibirFicha()
         {

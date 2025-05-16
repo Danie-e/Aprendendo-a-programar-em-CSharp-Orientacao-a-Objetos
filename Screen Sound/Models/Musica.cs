@@ -5,7 +5,7 @@
         public string Nome { get; set; } = string.Empty;
         public string Artista { get; set; } = string.Empty;
         public int Duracao { get; set; }
-        public bool Disponivel { get; set; }
+        private bool Disponivel { get; set; }
 
         public void ExibirFicha()
         {

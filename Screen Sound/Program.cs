@@ -2,13 +2,21 @@
 using Screen_Sound.Models;
 
 Album AlbumDoQueen = new Album();
+AlbumDoQueen.Nome = "A Night at the Opera";
 
 Musica musica1 = new Musica();
-musica1.Nome = "Queen";
-musica1.Artista = "Love of my life";
+musica1.Artista = "Queen";
+musica1.Nome = "Love of my life";
 musica1.Duracao = 273;
 
+Musica musica2 = new Musica();
+musica2.Artista = "Queen";
+musica2.Nome = "Bohemian Rhapsody";
+musica2.Duracao = 275;
+
 AlbumDoQueen.AdicionarMusica(musica1);
+AlbumDoQueen.AdicionarMusica(musica2);
+AlbumDoQueen.ExibirMusicasDoAlbum();
 
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
 bandasRegistradas.Add("U2", new() { 1, 4, 8 });

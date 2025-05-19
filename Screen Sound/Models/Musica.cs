@@ -2,14 +2,15 @@
 {
     public class Musica
     {
-        public Musica(Banda artista)
+        public Musica(Banda artista, string nome)
         {
             Artista = artista;
+            Nome = nome;
         }
-        public string Nome { get; set; } = string.Empty;
+        public string Nome { get; }
         public Banda Artista { get; }
         public int Duracao { get; set; }
-        private bool Disponivel { get; set; }
+        public bool Disponivel { get; set; }
         public string DescricaoResumida { get { return $"A musica {Nome} e do artista {Artista.Nome}"; } }
 
         public void ExibirFicha()

@@ -2,12 +2,17 @@
 {
     public class Banda
     {
+        public Banda(string nome)
+        {
+            Nome = nome;
+        }
+
         public List<Album> ListaDeAlbuns { get; set; } = new();
-        public string Nome { get; set; }
+        public string Nome { get; }
         public void AdicionarAlbum(Album album)
         {
             ListaDeAlbuns.Add(album);
-        }                            
+        }
         public void ExibirDiscografia()
         {
             Console.WriteLine($"Discografia da banda {Nome}");

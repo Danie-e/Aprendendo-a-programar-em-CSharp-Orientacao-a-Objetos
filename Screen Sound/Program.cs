@@ -1,25 +1,28 @@
 ﻿
 using Screen_Sound.Models;
 
+Banda Queen = new Banda("Queen");
 
-Banda Queen = new Banda();
-Queen.Nome = "Queen";
+Musica musica1 = new Musica(Queen, "Love of my life")
+{
+    Duracao = 273,
+    Disponivel = true,
+};
 
-Musica musica1 = new Musica(Queen);
-musica1.Nome = "Love of my life";
-musica1.Duracao = 273;
+Musica musica2 = new Musica(Queen, "Bohemian Rhapsody")
+{
+    Duracao = 275,
+    Disponivel = false,
+};
 
-Musica musica2 = new Musica(Queen);
-musica2.Nome = "Bohemian Rhapsody";
-musica2.Duracao = 275;
-
-Album AlbumDoQueen = new Album();
-AlbumDoQueen.Nome = "A Night at the Opera";
+Album AlbumDoQueen = new Album("A Night at the Opera");
 AlbumDoQueen.AdicionarMusica(musica1);
 AlbumDoQueen.AdicionarMusica(musica2);
 //AlbumDoQueen.ExibirMusicasDoAlbum();
 
 Queen.AdicionarAlbum(AlbumDoQueen);
+musica1.ExibirFicha();
+musica2.ExibirFicha();
 Queen.ExibirDiscografia();
 
 

@@ -2,16 +2,20 @@
 {
     public class Musica
     {
+        public Musica(Banda artista)
+        {
+            Artista = artista;
+        }
         public string Nome { get; set; } = string.Empty;
-        public string Artista { get; set; } = string.Empty;
+        public Banda Artista { get; }
         public int Duracao { get; set; }
         private bool Disponivel { get; set; }
-        public string DescricaoResumida { get { return $"A musica {Nome} e do artista {Artista}"; } }
+        public string DescricaoResumida { get { return $"A musica {Nome} e do artista {Artista.Nome}"; } }
 
         public void ExibirFicha()
         {
             Console.WriteLine($"Nome: {Nome}");
-            Console.WriteLine($"Artista: {Artista}");
+            Console.WriteLine($"Artista: {Artista.Nome}");
             Console.WriteLine($"Duração: {Duracao}");
             Console.WriteLine(Disponivel ? "A musica esta disponivel no plano" : "Musica não disponivel no plano.");
         }

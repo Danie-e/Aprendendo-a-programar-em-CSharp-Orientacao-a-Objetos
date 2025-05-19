@@ -1,6 +1,6 @@
 ﻿namespace Screen_Sound.Models
 {
-    class Banda
+    public class Banda
     {
         public List<Album> ListaDeAlbuns { get; set; } = new();
         public string Nome { get; set; }

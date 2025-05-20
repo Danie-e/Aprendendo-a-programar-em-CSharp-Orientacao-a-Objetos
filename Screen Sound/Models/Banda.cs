@@ -8,8 +8,14 @@ internal class Banda
     }
 
     public List<Album> ListaDeAlbuns { get; set; } = new();
-    public List<int> notas { get;  } = new();
+    public List<Avaliacao> notas { get;  } = new();
     public string Nome { get; }
+    public double Media { get
+        {
+            if(notas.Count == 0) return 0;
+            return notas.Average(i => i.Nota);
+        }
+    }
     public void AdicionarAlbum(Album album)
     {
         ListaDeAlbuns.Add(album);
@@ -23,7 +29,7 @@ internal class Banda
         }
     }
 
-    public void AdicionarNota(int nota)
+    public void AdicionarNota(Avaliacao nota)
     {
         notas.Add(nota);
     }

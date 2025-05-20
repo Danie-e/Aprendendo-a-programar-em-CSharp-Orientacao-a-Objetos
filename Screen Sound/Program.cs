@@ -2,7 +2,7 @@
 using Screen_Sound.Models;
 
 Banda Queen = new Banda("Queen");
-Queen.AdicionarNota(10);
+Queen.AdicionarNota(new(10));
 
 Musica musica1 = new Musica(Queen, "Love of my life")
 {
@@ -139,7 +139,7 @@ void AvaliarBanda()
     {
         Console.WriteLine($"Digite sua nota para a banda {nomeBanda}");
         int notaBanda = int.Parse(Console.ReadLine()!);
-        bandasRegistradas[nomeBanda].AdicionarNota(notaBanda);
+        bandasRegistradas[nomeBanda].AdicionarNota(new(notaBanda));
     }
     else
     {
@@ -160,7 +160,7 @@ void ExibirMediaBanda()
     string nomeBanda = Console.ReadLine()!;
 
     if (bandasRegistradas.ContainsKey(nomeBanda))
-        Console.WriteLine($"A media das notas da banda {nomeBanda} é: {bandasRegistradas[nomeBanda].notas.Average():f2}.");
+        Console.WriteLine($"A media das notas da banda {nomeBanda} é: {bandasRegistradas[nomeBanda].Media:f2}.");
     else
         Console.WriteLine($"Não foi possivel encontrar a banda {nomeBanda}.");
 

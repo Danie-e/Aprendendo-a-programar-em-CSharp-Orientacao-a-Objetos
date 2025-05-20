@@ -2,6 +2,7 @@
 using Screen_Sound.Models;
 
 Banda Queen = new Banda("Queen");
+Queen.AdicionarNota(10);
 
 Musica musica1 = new Musica(Queen, "Love of my life")
 {
@@ -18,17 +19,11 @@ Musica musica2 = new Musica(Queen, "Bohemian Rhapsody")
 Album AlbumDoQueen = new Album("A Night at the Opera");
 AlbumDoQueen.AdicionarMusica(musica1);
 AlbumDoQueen.AdicionarMusica(musica2);
-//AlbumDoQueen.ExibirMusicasDoAlbum();
 
 Queen.AdicionarAlbum(AlbumDoQueen);
-musica1.ExibirFicha();
-musica2.ExibirFicha();
-Queen.ExibirDiscografia();
 
-
-Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
-bandasRegistradas.Add("U2", new() { 1, 4, 8 });
-bandasRegistradas.Add("Imagine Dragons", new() { 10, 5, 3 });
+Dictionary<string, Banda> bandasRegistradas = new();
+bandasRegistradas.Add(Queen.Nome, Queen);
 
 void ExibirLogo()
 {
@@ -49,9 +44,10 @@ void ExibirOpcoesDoMenu()
     ExibirLogo();
 
     Console.WriteLine("Digite 1 para registrar uma banda.");
-    Console.WriteLine("Digite 2 para exibir todas as bandas.");
-    Console.WriteLine("Digite 3 para avaliar uma banda.");
-    Console.WriteLine("Digite 4 para exibir media de uma banda.");
+    Console.WriteLine("Digite 2 para registrar uma album.");
+    Console.WriteLine("Digite 3 para exibir todas as bandas.");
+    Console.WriteLine("Digite 4 para avaliar uma banda.");
+    Console.WriteLine("Digite 5 para exibir media de uma banda.");
     Console.WriteLine("Digite -1 para sair.");
 
     Console.Write("Digite a sua opção: ");
@@ -63,12 +59,15 @@ void ExibirOpcoesDoMenu()
             RegistrarBanda();
             break;
         case 2:
-            MostrarBandasRegistradas();
+            RegistrarAlbum();
             break;
         case 3:
-            AvaliarBanda();
+            MostrarBandasRegistradas();
             break;
         case 4:
+            AvaliarBanda();
+            break;
+        case 5:
             ExibirMediaBanda();
             break;
         default:
@@ -77,19 +76,37 @@ void ExibirOpcoesDoMenu()
             break;
     }
 }
-
 void RegistrarBanda()
 {
     ExibirTituloDaOpcao("Registro de Bandas");
 
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
-    bandasRegistradas.Add(nomeDaBanda, new());
+    bandasRegistradas.Add(nomeDaBanda, new(nomeDaBanda));
     Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!");
 
     Thread.Sleep(2000);
     Console.Clear();
     ExibirOpcoesDoMenu();
+}
+void RegistrarAlbum()
+{
+    ExibirTituloDaOpcao("Registrar album da banda");
+    Console.Write("Digite o nome da banda que deseja cadastrar novo album: ");
+    string nomeBanda = Console.ReadLine()!;
+
+    if (bandasRegistradas.ContainsKey(nomeBanda))
+    {
+        Console.Write("Digite o nome do album: ");
+        string nomeAlbum = Console.ReadLine()!;
+        bandasRegistradas[nomeBanda].AdicionarAlbum(new(nomeAlbum));
+    }
+
+    Console.WriteLine($"O album da banda {nomeBanda} foi registrado com sucesso!");
+    Thread.Sleep(2000);
+    Console.Clear();
+    ExibirOpcoesDoMenu();
+
 }
 
 void MostrarBandasRegistradas()
@@ -122,7 +139,7 @@ void AvaliarBanda()
     {
         Console.WriteLine($"Digite sua nota para a banda {nomeBanda}");
         int notaBanda = int.Parse(Console.ReadLine()!);
-        bandasRegistradas[nomeBanda].Add(notaBanda);
+        bandasRegistradas[nomeBanda].AdicionarNota(notaBanda);
     }
     else
     {
@@ -143,7 +160,7 @@ void ExibirMediaBanda()
     string nomeBanda = Console.ReadLine()!;
 
     if (bandasRegistradas.ContainsKey(nomeBanda))
-        Console.WriteLine($"A media das notas da banda {nomeBanda} é: {bandasRegistradas[nomeBanda].Average():f2}.");
+        Console.WriteLine($"A media das notas da banda {nomeBanda} é: {bandasRegistradas[nomeBanda].notas.Average():f2}.");
     else
         Console.WriteLine($"Não foi possivel encontrar a banda {nomeBanda}.");
 

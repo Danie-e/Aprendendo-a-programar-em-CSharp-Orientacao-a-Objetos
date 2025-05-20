@@ -8,6 +8,7 @@
         }
 
         public List<Album> ListaDeAlbuns { get; set; } = new();
+        public List<int> notas { get;  } = new();
         public string Nome { get; }
         public void AdicionarAlbum(Album album)
         {
@@ -20,6 +21,11 @@
             {
                 Console.WriteLine($"O album {album.Nome} possue duração: {album.DuracaoTotal} segundos.");
             }
+        }
+
+        public void AdicionarNota(int nota)
+        {
+            notas.Add(nota);
         }
     }
 }

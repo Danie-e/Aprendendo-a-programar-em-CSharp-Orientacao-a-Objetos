@@ -16,10 +16,12 @@ internal class Banda
             return notas.Average(i => i.Nota);
         }
     }
+
     public void AdicionarAlbum(Album album)
     {
         ListaDeAlbuns.Add(album);
     }
+
     public void ExibirDiscografia()
     {
         Console.WriteLine($"Discografia da banda {Nome}");

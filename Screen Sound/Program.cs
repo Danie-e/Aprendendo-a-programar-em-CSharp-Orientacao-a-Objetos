@@ -76,6 +76,7 @@ void ExibirOpcoesDoMenu()
             break;
     }
 }
+
 void RegistrarBanda()
 {
     ExibirTituloDaOpcao("Registro de Bandas");
@@ -89,6 +90,7 @@ void RegistrarBanda()
     Console.Clear();
     ExibirOpcoesDoMenu();
 }
+
 void RegistrarAlbum()
 {
     ExibirTituloDaOpcao("Registrar album da banda");
@@ -137,9 +139,10 @@ void AvaliarBanda()
 
     if (bandasRegistradas.ContainsKey(nomeBanda))
     {
-        Console.WriteLine($"Digite sua nota para a banda {nomeBanda}");
-        int notaBanda = int.Parse(Console.ReadLine()!);
-        bandasRegistradas[nomeBanda].AdicionarNota(new(notaBanda));
+        Console.Write($"Digite sua nota para a banda {nomeBanda}");
+        Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
+        bandasRegistradas[nomeBanda].AdicionarNota(nota);
+        Console.Write($"Nota registrada com sucesso!");
     }
     else
     {
@@ -171,7 +174,6 @@ void ExibirMediaBanda()
     Console.Clear();
     ExibirOpcoesDoMenu();
 }
-
 
 void ExibirTituloDaOpcao(string titulo)
 {

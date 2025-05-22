@@ -11,7 +11,14 @@ internal class MenuExibirDetalhes : Menu
         string nomeBanda = Console.ReadLine()!;
 
         if (bandasRegistradas.ContainsKey(nomeBanda))
-            Console.WriteLine($"A media das notas da banda {nomeBanda} é: {bandasRegistradas[nomeBanda].Media:f2}.");
+        {
+            Console.WriteLine("Discografia");
+            Console.WriteLine($"A media das notas da banda {nomeBanda} é: {bandasRegistradas[nomeBanda].Media:f2}.\n");
+            foreach (Album album in bandasRegistradas[nomeBanda].ListaDeAlbuns)
+            {
+                Console.WriteLine($"A media das notas do album {album.Nome} é: {album.Media:f2}.\n");
+            }
+        }
         else
             Console.WriteLine($"Não foi possivel encontrar a banda {nomeBanda}.");
 

@@ -18,10 +18,15 @@ Musica musica2 = new Musica(Queen, "Bohemian Rhapsody")
 };
 
 Album AlbumDoQueen = new Album("A Night at the Opera");
+Album AlbumMadeInHeaven = new Album("Made in Heaven");
+AlbumMadeInHeaven.AdicionarNota(new(4));
+AlbumMadeInHeaven.AdicionarNota(new(6));
+
 AlbumDoQueen.AdicionarMusica(musica1);
 AlbumDoQueen.AdicionarMusica(musica2);
 
 Queen.AdicionarAlbum(AlbumDoQueen);
+Queen.AdicionarAlbum(AlbumMadeInHeaven);
 
 Dictionary<string, Banda> bandasRegistradas = new();
 bandasRegistradas.Add(Queen.Nome, Queen);

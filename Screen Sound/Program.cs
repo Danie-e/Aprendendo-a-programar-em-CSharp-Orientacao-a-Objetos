@@ -2,6 +2,12 @@
 using Screen_Sound.Models;
 using Screen_Sound.Models.Menus;
 
+using (HttpClient client = new HttpClient())
+{
+    string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
+    Console.WriteLine(resposta);
+}
+
 Banda Queen = new Banda("Queen");
 Queen.AdicionarNota(new(10));
 

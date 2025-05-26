@@ -10,11 +10,13 @@ using (HttpClient client = new HttpClient())
     {
         string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
         List<Musica> musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!;
-        
+
         //foreach (Musica musica in musicas)
         //    musica.ExibirDetalhesMusica();
-        
-        LinqFilter.FiltrarGenerosMusicais(musicas);
+
+        //LinqFilter.FiltrarGenerosMusicais(musicas);
+        //LinqOrder.ExibirArtistasOrdenados(musicas);
+        LinqFilter.FiltrarArtistasPorGenero(musicas, "pop");
     }
     catch (Exception e)
     {

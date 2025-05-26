@@ -9,9 +9,20 @@ internal class LinqFilter
         List<string> generos = musicas.Select(musica => musica.Genero).Distinct().ToList();
 
         Console.WriteLine($"\nGeneros musicais encontrados:");
-                foreach (string genero in generos)
+        foreach (string genero in generos)
         {
             Console.WriteLine($"- {genero}");
         }
+    }
+
+    public static void FiltrarArtistasPorGenero(List<Musica> musicas, string genero)
+    {
+        List<string> artistasPorGenero = musicas.Where(musica => musica.Genero.Contains(genero)).Select(musica => musica.NomeArtista).Distinct().ToList();
+
+        Console.WriteLine($"Artistas econtrados do genero {genero}:");
+
+        foreach (string artista in artistasPorGenero)
+            Console.WriteLine($"- {artista}");
+
     }
 }

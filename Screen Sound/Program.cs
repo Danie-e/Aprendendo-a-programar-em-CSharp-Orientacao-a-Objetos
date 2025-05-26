@@ -4,8 +4,15 @@ using Screen_Sound.Models.Menus;
 
 using (HttpClient client = new HttpClient())
 {
-    string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
-    Console.WriteLine(resposta);
+    try
+    {
+        string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
+        Console.WriteLine(resposta);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+    }
 }
 
 Banda Queen = new Banda("Queen");
@@ -14,7 +21,6 @@ Queen.AdicionarNota(new(10));
 Musica musica1 = new Musica(Queen, "Love of my life")
 {
     Duracao = 273,
-    Disponivel = true,
 };
 
 Musica musica2 = new Musica(Queen, "Bohemian Rhapsody")

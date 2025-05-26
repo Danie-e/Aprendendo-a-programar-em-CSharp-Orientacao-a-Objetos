@@ -1,13 +1,18 @@
 ﻿
 using Screen_Sound.Models;
 using Screen_Sound.Models.Menus;
+using System.Text.Json;
 
 using (HttpClient client = new HttpClient())
 {
     try
     {
         string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
-        Console.WriteLine(resposta);
+        List<Musica> musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!;
+        foreach (Musica musica in musicas)
+        {
+            musica.ExibirDetalhesMusica();
+        }
     }
     catch (Exception e)
     {

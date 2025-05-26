@@ -1,4 +1,6 @@
-﻿namespace Screen_Sound.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace Screen_Sound.Models;
 
 internal class Musica
 {
@@ -7,9 +9,15 @@ internal class Musica
         Artista = artista;
         Nome = nome;
     }
-    public string Nome { get; }
     public Banda Artista { get; }
+    [JsonPropertyName("song")]
+    public string Nome { get; set; }
+    [JsonPropertyName("artist")]
+    public string NomeArtista { get; set; }
+    [JsonPropertyName("duration_ms")]
     public int Duracao { get; set; }
+    [JsonPropertyName("genre")]
+    public string Genero { get; set; }
     public bool Disponivel { get; set; }
     public string DescricaoResumida { get { return $"A musica {Nome} e do artista {Artista.Nome}"; } }
 
@@ -29,5 +37,12 @@ internal class Musica
     public bool LeDisponivel()
     {
         return Disponivel;
+    }
+    public void ExibirDetalhesMusica()
+    {
+        Console.WriteLine(@$"Nome da musica: {Nome}
+Artista: {NomeArtista}
+Duração: {Duracao / 1000}
+Genero: {Genero}");
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using Screen_Sound.Filters;
 using Screen_Sound.Models;
 using Screen_Sound.Models.Menus;
 using System.Text.Json;
@@ -9,10 +10,11 @@ using (HttpClient client = new HttpClient())
     {
         string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
         List<Musica> musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!;
-        foreach (Musica musica in musicas)
-        {
-            musica.ExibirDetalhesMusica();
-        }
+        
+        //foreach (Musica musica in musicas)
+        //    musica.ExibirDetalhesMusica();
+        
+        LinqFilter.FiltrarGenerosMusicais(musicas);
     }
     catch (Exception e)
     {

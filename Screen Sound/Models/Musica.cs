@@ -19,7 +19,7 @@ internal class Musica
     [JsonPropertyName("genre")]
     public string Genero { get; set; }
     public bool Disponivel { get; set; }
-    public string DescricaoResumida { get { return $"A musica {Nome} e do artista {Artista.Nome}"; } }
+    public string DescricaoResumida { get { return $"A musica {Nome} e do artista {NomeArtista}"; } }
 
     public void ExibirFicha()
     {

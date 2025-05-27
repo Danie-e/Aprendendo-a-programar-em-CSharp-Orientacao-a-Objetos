@@ -20,12 +20,13 @@ using (HttpClient client = new HttpClient())
         //LinqFilter.FiltrarMusicasPorArtista(musicas, "U2");
 
         MusicasPreferidas musicasDaDani = new("Daniela");
-        musicasDaDani.adicionarMusicaFavorita(musicas[1]);
-        musicasDaDani.adicionarMusicaFavorita(musicas[2]);
-        musicasDaDani.adicionarMusicaFavorita(musicas[3]);
-        musicasDaDani.adicionarMusicaFavorita(musicas[4]);
-        musicasDaDani.adicionarMusicaFavorita(musicas[5]);
-        musicasDaDani.EscrevaMusicasFavoritas();
+        musicasDaDani.AdicionarMusicaFavorita(musicas[1]);
+        musicasDaDani.AdicionarMusicaFavorita(musicas[2]);
+        musicasDaDani.AdicionarMusicaFavorita(musicas[3]);
+        musicasDaDani.AdicionarMusicaFavorita(musicas[4]);
+        musicasDaDani.AdicionarMusicaFavorita(musicas[5]);
+        //musicasDaDani.EscrevaMusicasFavoritas();
+        musicasDaDani.GerarArquivoJson();
     }
     catch (Exception e)
     {

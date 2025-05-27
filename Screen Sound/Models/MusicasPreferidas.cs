@@ -1,4 +1,7 @@
-﻿namespace Screen_Sound.Models;
+﻿using System.Net.Http.Json;
+using System.Text.Json;
+
+namespace Screen_Sound.Models;
 
 internal class MusicasPreferidas
 {
@@ -9,7 +12,7 @@ internal class MusicasPreferidas
     public string Nome { get; }
     public List<Musica> ListaDeMusicasFavoritas { get; } = new();
 
-    public void adicionarMusicaFavorita(Musica musica)
+    public void AdicionarMusicaFavorita(Musica musica)
     {
         ListaDeMusicasFavoritas.Add(musica);
     }
@@ -21,5 +24,18 @@ internal class MusicasPreferidas
         {
             musica.ExibirDetalhesMusica();
         }
+    }
+
+    public void GerarArquivoJson()
+    {
+        string json = JsonSerializer.Serialize(new
+        {
+            nome = Nome,
+            musicas = ListaDeMusicasFavoritas
+        });
+        string nomeArquivo = $"musicas-favoritas-{Nome}.json";
+
+        File.WriteAllText(nomeArquivo, json);
+        Console.WriteLine($"O arquivo foi criado com sucesso. {Path.GetFullPath(nomeArquivo)}");
     }
 }

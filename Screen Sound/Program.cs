@@ -16,7 +16,8 @@ using (HttpClient client = new HttpClient())
 
         //LinqFilter.FiltrarGenerosMusicais(musicas);
         //LinqOrder.ExibirArtistasOrdenados(musicas);
-        LinqFilter.FiltrarArtistasPorGenero(musicas, "pop");
+        //LinqFilter.FiltrarArtistasPorGenero(musicas, "pop");
+        LinqFilter.FiltrarMusicasPorArtista(musicas,"U2");
     }
     catch (Exception e)
     {

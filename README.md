@@ -61,3 +61,4 @@ Este projeto foi desenvolvido durante a formação [Aprenda a programar em C# co
    ```bash
    dotnet run
 
+[![Certificado](https://github.com/Danie-e/ScreenSound/blob/main/Certificado.jpg)](https://cursos.alura.com.br/user/danielaeloisa1/degree-c-sharp-orientacao-objetos-596248/certificate)

@@ -6,9 +6,10 @@ using Screen_Sound.Models.Menus;
 
 try
 {
-    using var connection = new Connection().ObterConexao();
-    connection.Open();
-    Console.WriteLine(connection.State);
+    var connection = new Connection();
+    var listaArtistas = connection.Listar();
+    foreach (var artista in listaArtistas)
+        Console.WriteLine(artista.Nome);
 }
 catch (Exception e)
 {
@@ -17,7 +18,6 @@ catch (Exception e)
 return;
 
 Banda Queen = new Banda("Queen");
-Queen.AdicionarNota(new(10));
 
 Musica musica1 = new Musica(Queen, "Love of my life")
 {

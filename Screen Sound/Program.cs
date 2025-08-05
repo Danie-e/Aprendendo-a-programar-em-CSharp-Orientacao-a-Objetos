@@ -1,38 +1,20 @@
 ﻿
-using Screen_Sound.Filters;
+using Screen_Sound.Banco;
 using Screen_Sound.Models;
 using Screen_Sound.Models.Menus;
-using System.Text.Json;
 
-using (HttpClient client = new HttpClient())
+
+try
 {
-    try
-    {
-        string resposta = await client.GetStringAsync("https://guilhermeonrails.github.io/api-csharp-songs/songs.json");
-        List<Musica> musicas = JsonSerializer.Deserialize<List<Musica>>(resposta)!;
-
-        //foreach (Musica musica in musicas)
-        //    musica.ExibirDetalhesMusica();
-
-        //LinqFilter.FiltrarGenerosMusicais(musicas);
-        //LinqOrder.ExibirArtistasOrdenados(musicas);
-        //LinqFilter.FiltrarArtistasPorGenero(musicas, "pop");
-        //LinqFilter.FiltrarMusicasPorArtista(musicas, "U2");
-
-        MusicasPreferidas musicasDaDani = new("Daniela");
-        musicasDaDani.AdicionarMusicaFavorita(musicas[1]);
-        musicasDaDani.AdicionarMusicaFavorita(musicas[2]);
-        musicasDaDani.AdicionarMusicaFavorita(musicas[3]);
-        musicasDaDani.AdicionarMusicaFavorita(musicas[4]);
-        musicasDaDani.AdicionarMusicaFavorita(musicas[5]);
-        //musicasDaDani.EscrevaMusicasFavoritas();
-        musicasDaDani.GerarArquivoJson();
-    }
-    catch (Exception e)
-    {
-        Console.WriteLine(e.Message);
-    }
+    using var connection = new Connection().ObterConexao();
+    connection.Open();
+    Console.WriteLine(connection.State);
 }
+catch (Exception e)
+{
+    Console.WriteLine(e.Message);
+}
+return;
 
 Banda Queen = new Banda("Queen");
 Queen.AdicionarNota(new(10));

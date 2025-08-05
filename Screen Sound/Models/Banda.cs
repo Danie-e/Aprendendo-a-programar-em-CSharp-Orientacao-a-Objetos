@@ -9,6 +9,10 @@ internal class Banda : IAvaliavel
 
     public List<Album> ListaDeAlbuns { get; set; } = new();
     public List<Avaliacao> notas { get; } = new();
+
+    public string FotoPerfil { get; set; }
+    public string Bio { get; set; }
+    public int Id { get; set; }
     public string Nome { get; }
     public double Media
     {
@@ -36,5 +40,13 @@ internal class Banda : IAvaliavel
     public void AdicionarNota(Avaliacao nota)
     {
         notas.Add(nota);
+    }
+
+    public override string ToString()
+    {
+        return $@"
+Banda: {Nome}, 
+Biografia: {Bio},
+Média de Avaliações: {Media:F2}";
     }
 }

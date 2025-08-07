@@ -1,13 +1,14 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace Screen_Sound.Banco;
 
-internal class Connection
+internal class ScreenSoundContext:DbContext
 {
     private string StringConnection { get; set; } = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ScreenSound;Integrated Security=True;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
-    public SqlConnection ObterConexao()
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        return new SqlConnection(StringConnection);
+        optionsBuilder.UseSqlServer(StringConnection);
     }
 }

@@ -8,7 +8,7 @@ internal class ArtistaDAL
     public IEnumerable<Banda> Listar()
     {
         List<Banda> lista = new();
-        using var connection = new Connection().ObterConexao();
+        using var connection = new ScreenSoundContext().ObterConexao();
         connection.Open();
 
         using SqlCommand command = new("SELECT * FROM Artistas", connection);
@@ -34,7 +34,7 @@ internal class ArtistaDAL
 
     public void Inserir(Banda banda)
     {
-        using var connection = new Connection().ObterConexao();
+        using var connection = new ScreenSoundContext().ObterConexao();
         connection.Open();
 
         using SqlCommand command = new("INSERT INTO Artistas (Nome, FotoPerfil, Bio) VALUES (@nome, @perfilPadrao, @bio)", connection);
@@ -47,7 +47,7 @@ internal class ArtistaDAL
     }
     public void Atualizar(Banda banda)
     {
-        using var connection = new Connection().ObterConexao();
+        using var connection = new ScreenSoundContext().ObterConexao();
         connection.Open();
         Console.WriteLine(banda.ToString());
         using SqlCommand command = new("UPDATE Artistas SET Nome = @nome, Bio = @bio WHERE Id = @id", connection);
@@ -60,7 +60,7 @@ internal class ArtistaDAL
     }
     public void Deletar(int id)
     {
-        using var connection = new Connection().ObterConexao();
+        using var connection = new ScreenSoundContext().ObterConexao();
         connection.Open();
         Console.WriteLine(id);
 

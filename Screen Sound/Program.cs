@@ -7,22 +7,22 @@ using Screen_Sound.Models.Menus;
 try
 {
     var artistaDal = new ArtistaDAL();
-    artistaDal.Inserir(new Banda("Os Beatles")
-    {
-        FotoPerfil = "https://people.com/thmb/GEMT5hOHPAnXPDfA3Bh1U2NuDJE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/the-beetles-1-1a971bd703a849268568fcf20bee9fe1.jpg",
-        Bio = "teste."
-    });
+    //artistaDal.Inserir(new Banda("Os Beatles")
+    //{
+    //    FotoPerfil = "https://people.com/thmb/GEMT5hOHPAnXPDfA3Bh1U2NuDJE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/the-beetles-1-1a971bd703a849268568fcf20bee9fe1.jpg",
+    //    Bio = "teste."
+    //});
 
     var listaArtistas = artistaDal.Listar();
   
-    listaArtistas.Last().Bio = "Atualizar";
-    artistaDal.Atualizar(listaArtistas.Last());
+    //listaArtistas.Last().Bio = "Atualizar";
+    //artistaDal.Atualizar(listaArtistas.Last());
 
-    listaArtistas = artistaDal.Listar();
+    //listaArtistas = artistaDal.Listar();
    
-    artistaDal.Deletar(listaArtistas.Last().Id);
+    //artistaDal.Deletar(listaArtistas.Last().Id);
 
-    listaArtistas = artistaDal.Listar();
+    //listaArtistas = artistaDal.Listar();
     foreach (var artista in listaArtistas)
         Console.WriteLine(artista.ToString());
 

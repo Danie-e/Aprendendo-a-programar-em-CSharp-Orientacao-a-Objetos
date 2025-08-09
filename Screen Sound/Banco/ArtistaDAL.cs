@@ -5,49 +5,36 @@ namespace Screen_Sound.Banco;
 
 internal class ArtistaDAL
 {
-    public IEnumerable<Artista> Listar()
+    public ArtistaDAL(ScreenSoundContext context)
     {
-        using var context = new ScreenSoundContext();
-
-        return context.Artistas.ToList();   
+        this.context = context;
     }
 
-    //public void Inserir(Banda banda)
-    //{
-    //    using var connection = new ScreenSoundContext().ObterConexao();
-    //    connection.Open();
+    private readonly ScreenSoundContext context;
 
-    //    using SqlCommand command = new("INSERT INTO Artistas (Nome, FotoPerfil, Bio) VALUES (@nome, @perfilPadrao, @bio)", connection);
-    //    command.Parameters.AddWithValue("@nome", banda.Nome);
-    //    command.Parameters.AddWithValue("@perfilPadrao", banda.FotoPerfil);
-    //    command.Parameters.AddWithValue("@bio", banda.Bio);
 
-    //    int retorno = command.ExecuteNonQuery();
-    //    Console.WriteLine($"Foram inseridos {retorno} registros na tabela Artistas.");
-    //}
-    //public void Atualizar(Banda banda)
-    //{
-    //    using var connection = new ScreenSoundContext().ObterConexao();
-    //    connection.Open();
-    //    Console.WriteLine(banda.ToString());
-    //    using SqlCommand command = new("UPDATE Artistas SET Nome = @nome, Bio = @bio WHERE Id = @id", connection);
-    //    command.Parameters.AddWithValue("@nome", banda.Nome);
-    //    command.Parameters.AddWithValue("@bio", banda.Bio);
-    //    command.Parameters.AddWithValue("@id", banda.Id);
+    public IEnumerable<Artista> Listar()
+    {
+        return context.Artistas.ToList();
+    }
 
-    //    int retorno = command.ExecuteNonQuery();
-    //    Console.WriteLine($"Foram atualizados {retorno} registros na tabela Artistas.");
-    //}
-    //public void Deletar(int id)
-    //{
-    //    using var connection = new ScreenSoundContext().ObterConexao();
-    //    connection.Open();
-    //    Console.WriteLine(id);
+    public void Inserir(Artista banda)
+    {
+        context.Artistas.Add(banda);
+        context.SaveChanges();
+        Console.WriteLine($"Banda {banda.Nome} inserida com sucesso.");
+    }
 
-    //    using SqlCommand command = new("DELETE FROM Artistas WHERE Id = @id", connection);
-    //    command.Parameters.AddWithValue("@id", id);
-
-    //    int retorno = command.ExecuteNonQuery();
-    //    Console.WriteLine($"Foram deletados {retorno} registros na tabela Artistas.");
-    //}
+    public void Atualizar(Artista banda)
+    {
+        context.Artistas.Update(banda);
+        context.SaveChanges();
+        Console.WriteLine($"Banda {banda.Nome} atualizada com sucesso.");
+    }
+    public void Deletar(Artista banda)
+    {
+        context.Artistas.Remove(banda);
+        context.SaveChanges();
+        Console.WriteLine($"Foram deletada a {banda.Nome} na tabela Artistas.");
+    }
 }

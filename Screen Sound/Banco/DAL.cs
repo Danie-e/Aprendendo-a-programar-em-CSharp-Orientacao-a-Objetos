@@ -1,6 +1,6 @@
 ﻿namespace Screen_Sound.Banco;
 
-internal abstract class DAL<T> where T : class
+internal class DAL<T> where T : class
 {
     protected DAL(ScreenSoundContext context)
     {
@@ -26,5 +26,9 @@ internal abstract class DAL<T> where T : class
     {
         context.Set<T>().Remove(objeto);
         context.SaveChanges();
+    }
+    public T? ObterPor(Func<T, bool> condicao)
+    {
+        return context.Set<T>().FirstOrDefault(condicao);
     }
 }

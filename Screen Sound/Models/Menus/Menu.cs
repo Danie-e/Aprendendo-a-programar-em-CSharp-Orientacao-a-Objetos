@@ -15,7 +15,7 @@ internal class Menu
         Console.WriteLine(titulo);
         Console.WriteLine(asteristico);
     }
-    public virtual void Executar(BandaDAl bandasDAl)
+    public virtual void Executar(DAL<Banda> bandasDAl)
     {
     }
 

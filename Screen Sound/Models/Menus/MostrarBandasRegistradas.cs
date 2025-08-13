@@ -5,7 +5,7 @@ namespace Screen_Sound.Models.Menus;
 
 internal class MostrarBandasRegistradas : Menu
 {
-    public override void Executar(BandaDAl bandaDAL)
+    public override void Executar(DAL<Banda> bandaDAL)
     {
         ExibirTituloDaOpcao("Exibindo nome de todas as bandas registradas.");
 

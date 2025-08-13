@@ -5,14 +5,13 @@ namespace Screen_Sound.Models.Menus;
 
 internal class AvaliarBanda : Menu
 {
-    public override void Executar(BandaDAl bandaDAL)
+    public override void Executar(DAL<Banda> bandaDAL)
     {
         ExibirTituloDaOpcao("Avaliar Banda");
 
         Console.Write("Digite o nome da banda que voce deseja avaliar: ");
         string nomeBanda = Console.ReadLine()!;
-        List<Banda> bandasRegistradas = bandaDAL.Listar().ToList();
-        Banda banda = bandasRegistradas.FirstOrDefault(banda => banda.Nome == nomeBanda);
+        Banda banda = bandaDAL.ObterPor(banda => banda.Nome == nomeBanda);
 
         if (banda is not null)
         {

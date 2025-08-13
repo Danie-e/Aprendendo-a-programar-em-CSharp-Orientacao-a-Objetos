@@ -5,14 +5,13 @@ namespace Screen_Sound.Models.Menus;
 
 internal class MenuExibirDetalhes : Menu
 {
-    public override void Executar(BandaDAl bandaDAL)
+    public override void Executar(DAL<Banda> bandaDAL)
     {
         ExibirTituloDaOpcao("Exibir media da banda");
 
         Console.Write("Digite o nome da banda que voce deseja saber a nota: ");
         string nomeBanda = Console.ReadLine()!;
-        List<Banda> bandasRegistradas = bandaDAL.Listar().ToList();
-        Banda banda = bandasRegistradas.FirstOrDefault(banda => banda.Nome == nomeBanda);
+        Banda banda = bandaDAL.ObterPor(banda => banda.Nome == nomeBanda);
         if (banda is not null)
         //if (bandasRegistradas.ContainsKey(nomeBanda))
         {

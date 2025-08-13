@@ -2,6 +2,7 @@
 
 internal class Banda : IAvaliavel
 {
+    public Banda() { }
     public Banda(string nome)
     {
         Nome = nome;

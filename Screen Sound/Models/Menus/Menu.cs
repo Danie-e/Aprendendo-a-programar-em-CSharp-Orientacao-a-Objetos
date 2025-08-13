@@ -1,4 +1,6 @@
-﻿namespace Screen_Sound.Models.Menus;
+﻿using Screen_Sound.Banco;
+
+namespace Screen_Sound.Models.Menus;
 
 internal class Menu
 {
@@ -13,7 +15,7 @@ internal class Menu
         Console.WriteLine(titulo);
         Console.WriteLine(asteristico);
     }
-    public virtual void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public virtual void Executar(BandaDAl bandasDAl)
     {
     }
 

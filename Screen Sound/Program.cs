@@ -1,66 +1,7 @@
 ﻿
 using Screen_Sound.Banco;
-using Screen_Sound.Models;
 using Screen_Sound.Models.Menus;
 
-
-try
-{
-    var context = new ScreenSoundContext();
-    var artistaDal = new ArtistaDAL(context);
-    //artistaDal.Deletar(new Artista( "Teste", "Bio Teste atualizar") { Id= 2002 });
-    //artistaDal.Inserir(new Banda("Os Beatles")
-    //{
-    //    FotoPerfil = "https://people.com/thmb/GEMT5hOHPAnXPDfA3Bh1U2NuDJE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2)/the-beetles-1-1a971bd703a849268568fcf20bee9fe1.jpg",
-    //    Bio = "teste."
-    //});
-
-    var listaArtistas = artistaDal.Listar();
-
-    //listaArtistas.Last().Bio = "Atualizar";
-    //artistaDal.Atualizar(listaArtistas.Last());
-
-    //listaArtistas = artistaDal.Listar();
-
-    //artistaDal.Deletar(listaArtistas.Last().Id);
-
-    //listaArtistas = artistaDal.Listar();
-    foreach (var artista in listaArtistas)
-        Console.WriteLine(artista.ToString());
-
-}
-catch (Exception e)
-{
-    Console.WriteLine(e.Message);
-}
-return;
-
-Banda Queen = new Banda("Queen");
-
-Musica musica1 = new Musica(Queen, "Love of my life")
-{
-    Duracao = 273,
-};
-
-Musica musica2 = new Musica(Queen, "Bohemian Rhapsody")
-{
-    Duracao = 275,
-    Disponivel = false,
-};
-
-Album AlbumDoQueen = new Album("A Night at the Opera");
-Album AlbumMadeInHeaven = new Album("Made in Heaven");
-AlbumMadeInHeaven.AdicionarNota(new(4));
-AlbumMadeInHeaven.AdicionarNota(new(6));
-
-AlbumDoQueen.AdicionarMusica(musica1);
-AlbumDoQueen.AdicionarMusica(musica2);
-
-Queen.AdicionarAlbum(AlbumDoQueen);
-Queen.AdicionarAlbum(AlbumMadeInHeaven);
-
-Dictionary<string, Banda> bandasRegistradas = new();
-bandasRegistradas.Add(Queen.Nome, Queen);
 
 Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new RegistrarBanda());
@@ -86,6 +27,8 @@ void ExibirLogo()
 
 void ExibirOpcoesDoMenu()
 {
+    var context = new ScreenSoundContext();
+    var artistaDAL = new BandaDAl(context);
     ExibirLogo();
 
     Console.WriteLine("Digite 1 para registrar uma banda.");
@@ -99,7 +42,7 @@ void ExibirOpcoesDoMenu()
     Console.Write("Digite a sua opção: ");
 
     int opcaoEscolhida = int.Parse(Console.ReadLine()!);
-    opcoes[opcaoEscolhida].Executar(bandasRegistradas);
+    opcoes[opcaoEscolhida].Executar(artistaDAL);
     if (opcaoEscolhida > 0)
         ExibirOpcoesDoMenu();
 }

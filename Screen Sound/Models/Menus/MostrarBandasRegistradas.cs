@@ -1,18 +1,16 @@
 ﻿
+using Screen_Sound.Banco;
+
 namespace Screen_Sound.Models.Menus;
 
 internal class MostrarBandasRegistradas : Menu
 {
-    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public override void Executar(BandaDAl bandaDAL)
     {
         ExibirTituloDaOpcao("Exibindo nome de todas as bandas registradas.");
 
-        //for (int i = 0; i < listaDeBandas.Count; i++)
-        //    Console.WriteLine($"Banda: {listaDeBandas[i]}");
-
-        foreach (string banda in bandasRegistradas.Keys)
-            Console.WriteLine($"Banda: {banda}");
-
+        foreach (Banda banda in bandaDAL.Listar())
+            Console.WriteLine($"Banda: {banda.ToString()}");
 
         Console.WriteLine("\nPressione qualquer tecla para voltar ao menu principal.");
         Console.ReadKey();

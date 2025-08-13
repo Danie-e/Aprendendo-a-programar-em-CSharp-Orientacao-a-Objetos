@@ -3,9 +3,9 @@ using Screen_Sound.Models;
 
 namespace Screen_Sound.Banco;
 
-internal class ArtistaDAL
+internal class BandaDAl
 {
-    public ArtistaDAL(ScreenSoundContext context)
+    public BandaDAl(ScreenSoundContext context)
     {
         this.context = context;
     }
@@ -13,27 +13,27 @@ internal class ArtistaDAL
     private readonly ScreenSoundContext context;
 
 
-    public IEnumerable<Artista> Listar()
+    public IEnumerable<Banda> Listar()
     {
-        return context.Artistas.ToList();
+        return context.Bandas.ToList();
     }
 
-    public void Inserir(Artista banda)
+    public void Inserir(Banda banda)
     {
-        context.Artistas.Add(banda);
+        context.Bandas.Add(banda);
         context.SaveChanges();
         Console.WriteLine($"Banda {banda.Nome} inserida com sucesso.");
     }
 
-    public void Atualizar(Artista banda)
+    public void Atualizar(Banda banda)
     {
-        context.Artistas.Update(banda);
+        context.Bandas.Update(banda);
         context.SaveChanges();
         Console.WriteLine($"Banda {banda.Nome} atualizada com sucesso.");
     }
-    public void Deletar(Artista banda)
+    public void Deletar(Banda banda)
     {
-        context.Artistas.Remove(banda);
+        context.Bandas.Remove(banda);
         context.SaveChanges();
         Console.WriteLine($"Foram deletada a {banda.Nome} na tabela Artistas.");
     }

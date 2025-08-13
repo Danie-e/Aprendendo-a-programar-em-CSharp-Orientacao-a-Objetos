@@ -1,20 +1,24 @@
 ﻿
+using Screen_Sound.Banco;
+
 namespace Screen_Sound.Models.Menus;
 
 internal class AvaliarBanda : Menu
 {
-    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public override void Executar(BandaDAl bandaDAL)
     {
         ExibirTituloDaOpcao("Avaliar Banda");
 
         Console.Write("Digite o nome da banda que voce deseja avaliar: ");
         string nomeBanda = Console.ReadLine()!;
+        List<Banda> bandasRegistradas = bandaDAL.Listar().ToList();
+        Banda banda = bandasRegistradas.FirstOrDefault(banda => banda.Nome == nomeBanda);
 
-        if (bandasRegistradas.ContainsKey(nomeBanda))
+        if (banda is not null)
         {
             Console.Write($"Digite sua nota para a banda {nomeBanda}");
             Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
-            bandasRegistradas[nomeBanda].AdicionarNota(nota);
+            banda.AdicionarNota(nota);
             Console.Write($"Nota registrada com sucesso!");
         }
         else

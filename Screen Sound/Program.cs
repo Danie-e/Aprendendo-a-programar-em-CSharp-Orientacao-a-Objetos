@@ -1,5 +1,6 @@
 ﻿
 using Screen_Sound.Banco;
+using Screen_Sound.Models;
 using Screen_Sound.Models.Menus;
 
 
@@ -28,7 +29,7 @@ void ExibirLogo()
 void ExibirOpcoesDoMenu()
 {
     var context = new ScreenSoundContext();
-    var artistaDAL = new BandaDAl(context);
+    var artistaDAL = new DAL<Banda>(context);
     ExibirLogo();
 
     Console.WriteLine("Digite 1 para registrar uma banda.");

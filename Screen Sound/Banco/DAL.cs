@@ -2,7 +2,7 @@
 
 internal class DAL<T> where T : class
 {
-    protected DAL(ScreenSoundContext context)
+    protected internal DAL(ScreenSoundContext context)
     {
         this.context = context;
     }

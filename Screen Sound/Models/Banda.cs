@@ -1,13 +1,13 @@
 ﻿namespace Screen_Sound.Models;
 
-internal class Banda : IAvaliavel
+public class Banda : IAvaliavel
 {
     public Banda(string nome)
     {
         Nome = nome;
     }
 
-    public List<Album> ListaDeAlbuns { get; set; } = new();
+    public virtual List<Album> ListaDeAlbuns { get; set; } = new();
     public List<Avaliacao> notas { get; set; } = new();
 
     public string FotoPerfil { get; set; }

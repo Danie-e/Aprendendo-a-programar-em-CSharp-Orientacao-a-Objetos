@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace Screen_Sound.Models;
 
-namespace Screen_Sound.Models;
-
-internal class Album : IAvaliavel
+public class Album : IAvaliavel
 {
     public Album(string nome)
     {
@@ -11,7 +9,7 @@ internal class Album : IAvaliavel
     public int Id { get; set; }
     public string Nome { get; set; }
     public int DuracaoTotal => MusicasAlbum.Sum(i => i.Duracao);
-    public List<Avaliacao> Notas { get; set; } = new();
+    public virtual List<Avaliacao> Notas { get; set; } = new();
     public double Media
     {
         get
@@ -20,7 +18,7 @@ internal class Album : IAvaliavel
             else return Notas.Average(a => a.Nota);
         }
     }
-    public List<Musica> MusicasAlbum { get; set; } = new();
+    public virtual List<Musica> MusicasAlbum { get; set; } = new();
 
     public void AdicionarMusica(Musica musica)
     {

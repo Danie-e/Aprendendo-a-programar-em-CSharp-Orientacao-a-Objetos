@@ -11,7 +11,7 @@ using Screen_Sound.Banco;
 namespace Screen_Sound.Migrations
 {
     [DbContext(typeof(ScreenSoundContext))]
-    [Migration("20250821112217_ProjetoInicial")]
+    [Migration("20250821122722_ProjetoInicial")]
     partial class ProjetoInicial
     {
         /// <inheritdoc />
@@ -34,6 +34,10 @@ namespace Screen_Sound.Migrations
 
                     b.Property<int?>("BandaId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -78,6 +82,10 @@ namespace Screen_Sound.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FotoPerfil")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

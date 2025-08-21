@@ -4,15 +4,14 @@ namespace Screen_Sound.Models;
 
 internal class Album : IAvaliavel
 {
-    public Album() { }
     public Album(string nome)
     {
         Nome = nome;
     }
     public int Id { get; set; }
-    public string Nome { get; }
+    public string Nome { get; set; }
     public int DuracaoTotal => MusicasAlbum.Sum(i => i.Duracao);
-    private List<Avaliacao> Notas { get; } = new();
+    public List<Avaliacao> Notas { get; set; } = new();
     public double Media
     {
         get
@@ -21,7 +20,7 @@ internal class Album : IAvaliavel
             else return Notas.Average(a => a.Nota);
         }
     }
-    private List<Musica> MusicasAlbum { get; set; } = new();
+    public List<Musica> MusicasAlbum { get; set; } = new();
 
     public void AdicionarMusica(Musica musica)
     {

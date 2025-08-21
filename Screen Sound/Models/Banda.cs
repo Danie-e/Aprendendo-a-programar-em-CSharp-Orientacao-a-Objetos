@@ -2,19 +2,18 @@
 
 internal class Banda : IAvaliavel
 {
-    public Banda() { }
     public Banda(string nome)
     {
         Nome = nome;
     }
 
     public List<Album> ListaDeAlbuns { get; set; } = new();
-    public List<Avaliacao> notas { get; } = new();
+    public List<Avaliacao> notas { get; set; } = new();
 
     public string FotoPerfil { get; set; }
     public string Bio { get; set; }
     public int Id { get; set; }
-    public string Nome { get; }
+    public string Nome { get; set; }
     public double Media
     {
         get

@@ -12,14 +12,15 @@ internal class Musica
     }
     public int Id { get; set; }
     public Banda Artista { get; }
-    //[JsonPropertyName("song")]
+    [JsonPropertyName("song")]
     public string Nome { get; set; }
-    //[JsonPropertyName("artist")]
+    [JsonPropertyName("artist")]
     public string NomeArtista { get; set; }
-    //[JsonPropertyName("duration_ms")]
+    [JsonPropertyName("duration_ms")]
     public int Duracao { get; set; }
-    //[JsonPropertyName("genre")]
+    [JsonPropertyName("genre")]
     public string Genero { get; set; }
+    public DateOnly? DataLancamento { get; set; }
     public bool Disponivel { get; set; }
     public string DescricaoResumida { get { return $"A musica {Nome} e do artista {NomeArtista}"; } }
 

@@ -11,7 +11,9 @@ internal class RegistrarBanda : Menu
 
         Console.Write("Digite o nome da banda que deseja registrar: ");
         string nomeDaBanda = Console.ReadLine()!;
-        bandaDAL.Inserir(new Banda(nomeDaBanda));
+        Console.Write("Digite a biografia da banda que deseja registrar: ");
+        string bioDaBanda = Console.ReadLine()!;
+        bandaDAL.Inserir(new Banda(nomeDaBanda, bioDaBanda));
         Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!");
 
         Thread.Sleep(2000);

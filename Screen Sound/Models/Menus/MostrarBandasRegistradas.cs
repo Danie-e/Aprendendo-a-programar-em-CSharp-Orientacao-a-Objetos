@@ -10,7 +10,7 @@ internal class MostrarBandasRegistradas : Menu
         ExibirTituloDaOpcao("Exibindo nome de todas as bandas registradas.");
 
         foreach (Banda banda in bandaDAL.Listar())
-            Console.WriteLine($"Banda: {banda.ToString()}");
+            Console.WriteLine(banda.ToString());
 
         Console.WriteLine("\nPressione qualquer tecla para voltar ao menu principal.");
         Console.ReadKey();

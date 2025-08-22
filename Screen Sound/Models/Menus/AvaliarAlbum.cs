@@ -12,7 +12,7 @@ internal class AvaliarAlbum : Menu
 
         Console.Write("Digite o nome da banda que voce deseja avaliar: ");
         string nomeBanda = Console.ReadLine()!;
-        Banda banda = bandaDAL.ObterPor(banda => banda.Nome == nomeBanda);
+        Banda? banda = bandaDAL.ObterPor(banda => banda.Nome == nomeBanda);
 
         if (banda is not null)
         {
@@ -21,10 +21,13 @@ internal class AvaliarAlbum : Menu
             Album album = banda.ListaDeAlbuns.FirstOrDefault(i => i.Nome == nomeAlbum);
             if (album is not null)
             {
+                DAL<Avaliacao> avaliacaoDAL = new(new ScreenSoundContext());
                 Console.Write($"Digite sua nota para o album {nomeAlbum}: ");
                 Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
 
-                album.AdicionarNota(nota);
+                nota.AlbumId = album.Id;
+                avaliacaoDAL.Inserir(nota);
+
                 Console.Write($"Nota registrada com sucesso!");
             }
             else

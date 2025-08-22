@@ -2,10 +2,13 @@
 
 public class Album : IAvaliavel
 {
-    public Album(string nome)
+    public Album() { }
+    public Album(string nome, int bandaId)
     {
         Nome = nome;
+        BandaId = bandaId;
     }
+    public int BandaId { get; set; }
     public int Id { get; set; }
     public string Nome { get; set; }
     public int DuracaoTotal => MusicasAlbum.Sum(i => i.Duracao);

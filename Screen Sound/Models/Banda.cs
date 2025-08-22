@@ -2,16 +2,17 @@
 
 public class Banda : IAvaliavel
 {
-    public Banda(string nome)
+    public Banda(string nome, string bio)
     {
         Nome = nome;
+        Bio = bio;
     }
 
     public virtual List<Album> ListaDeAlbuns { get; set; } = new();
-    public List<Avaliacao> notas { get; set; } = new();
+    public virtual List<Avaliacao> notas { get; set; } = new();
 
-    public string FotoPerfil { get; set; }
-    public string Bio { get; set; }
+    public string FotoPerfil { get; set; } = "https://img.freepik.com/vetores-premium/grupo-musica-banda-tocando-instrumentos-caracteres_25030-46989.jpg";
+    public string? Bio { get; set; }
     public int Id { get; set; }
     public string Nome { get; set; }
     public double Media
@@ -46,7 +47,7 @@ public class Banda : IAvaliavel
     {
         return $@"
 Banda: {Nome}, 
-Biografia: {Bio},
+Biografia: {Bio}
 Média de Avaliações: {Media:F2}";
     }
 }

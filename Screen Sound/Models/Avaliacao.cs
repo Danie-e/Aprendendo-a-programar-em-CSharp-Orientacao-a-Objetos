@@ -8,8 +8,9 @@ public class Avaliacao
         Nota = nota;
     }
     public int Id { get; set; }
-
-    public int Nota { get; }
+    public int Nota { get; set; }
+    public int? BandaId { get; set; }
+    public int? AlbumId { get; set; }
 
     public static Avaliacao Parse(string nota)
     {

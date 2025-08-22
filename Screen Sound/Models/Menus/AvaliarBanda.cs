@@ -1,5 +1,4 @@
-﻿
-using Screen_Sound.Banco;
+﻿using Screen_Sound.Banco;
 
 namespace Screen_Sound.Models.Menus;
 
@@ -11,13 +10,17 @@ internal class AvaliarBanda : Menu
 
         Console.Write("Digite o nome da banda que voce deseja avaliar: ");
         string nomeBanda = Console.ReadLine()!;
-        Banda banda = bandaDAL.ObterPor(banda => banda.Nome == nomeBanda);
+        Banda? banda = bandaDAL.ObterPor(banda => banda.Nome == nomeBanda);
 
         if (banda is not null)
         {
-            Console.Write($"Digite sua nota para a banda {nomeBanda}");
+            DAL<Avaliacao> avaliacaoDAL = new DAL<Avaliacao>(new ScreenSoundContext());
+            Console.Write($"Digite sua nota para a banda {nomeBanda}: ");
+           
             Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
-            banda.AdicionarNota(nota);
+            nota.BandaId = banda.Id;
+            avaliacaoDAL.Inserir(nota);
+
             Console.Write($"Nota registrada com sucesso!");
         }
         else

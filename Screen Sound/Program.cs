@@ -1,8 +1,7 @@
 ﻿
 using Screen_Sound.Banco;
 using Screen_Sound.Models;
-using Screen_Sound.Models.Menus;
-
+using Screen_Sound.Menus;
 
 Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new RegistrarBanda());

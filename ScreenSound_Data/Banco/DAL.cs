@@ -1,11 +1,12 @@
 ﻿namespace Screen_Sound.Banco;
 
-internal class DAL<T> where T : class
+public class DAL<T> where T : class
 {
-    protected internal DAL(ScreenSoundContext context)
+    public DAL(ScreenSoundContext context)
     {
         this.context = context;
     }
+
     private readonly ScreenSoundContext context;
 
     public IEnumerable<T> Listar()

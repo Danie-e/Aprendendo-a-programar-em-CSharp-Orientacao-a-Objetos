@@ -1,6 +1,7 @@
 ﻿using Screen_Sound.Banco;
+using Screen_Sound.Models;
 
-namespace Screen_Sound.Models.Menus;
+namespace Screen_Sound.Menus;
 
 internal class AvaliarBanda : Menu
 {

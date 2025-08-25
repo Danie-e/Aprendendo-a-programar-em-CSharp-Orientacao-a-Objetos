@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Screen_Sound.Banco;
 using Screen_Sound.Models;
 using System;
@@ -28,6 +29,13 @@ app.MapGet("/Bandas/{nome}", (string nome) =>
         return Results.NotFound();
     else
         return Results.Ok(banda);
+});
+
+app.MapGet("/Bandas", ([FromBody] Banda banda) =>
+{
+    var bandas = new DAL<Banda>(new ScreenSoundContext());
+    bandas.Inserir(banda);
+    return Results.Ok();
 });
 
 app.Run();

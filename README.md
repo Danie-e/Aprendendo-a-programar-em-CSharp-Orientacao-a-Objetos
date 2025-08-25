@@ -46,7 +46,14 @@ Este projeto foi desenvolvido durante a formação [Aprenda a programar em C# co
 4. **C#: consumindo API, gravando arquivos e utilizando o LINQ**
    - Integrar seus projetos com aplicações externas,como transformar um JSON de uma API externa em objetos C#, além de manipular os dados de forma prática com LINQ.
 
-     
+5. **.NET: persistindo dados com Entity Framework Core**
+   - Inclusão de persistência de dados em um projeto já existente
+   - Conheça ADO.NET e Entity Framework e aprenda como aplicar no projeto
+   - Criar seus próprios genéricos em C#
+   - O que são migrations e como utilizá-las para gerenciar as versões do banco de dados
+   - Refatoração para otimização de recursos e utilização de um código legível
+
+
 ## 🚀 Como Executar o Projeto
 
 1. Clone o repositório:
